@@ -4,12 +4,7 @@
     <div class="mt-8">
       <AddTask @added="addTask" />
       <template v-for="todo in getTodoList">
-        <TodoItem
-          :key="todo.id"
-          :todo="todo"
-          @toggleDone="toggleDone"
-          @toggleImportant="toggleImportant"
-        />
+        <TodoItem :key="todo.id" :todo="todo" @updated="updateTodo" />
       </template>
     </div>
   </v-layout>
@@ -47,12 +42,6 @@ export default {
         updatedAt: new Date()
       }
       this.addTodo(todo)
-    },
-    toggleDone(todo) {
-      this.updateTodo({ ...todo, done: !todo.done })
-    },
-    toggleImportant(todo) {
-      this.updateTodo({ ...todo, important: !todo.important })
     }
   }
 }

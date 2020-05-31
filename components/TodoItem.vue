@@ -29,10 +29,10 @@ export default {
   },
   methods: {
     toggleDone(todo) {
-      this.$emit('toggleDone', todo)
+      this.$emit('updated', { ...todo, done: !todo.done })
     },
     toggleImportant(todo) {
-      this.$emit('toggleImportant', todo)
+      this.$emit('updated', { ...todo, important: !todo.important })
     }
   }
 }
